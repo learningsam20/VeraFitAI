@@ -232,7 +232,7 @@ See **[docs/roadmap.md](docs/roadmap.md)**.
 ## 📺 Demos & Media
 
 - 📄 [Investor / Demo presentation (PDF)](docs/presentation.pdf) — generated from `docs/presentation.html` (print-to-PDF, slide-sized).
-- 🎬 Video walkthrough: *coming soon*
+- 🎬 [Video walkthrough](https://youtu.be/PdCjiCqF1f0)
 - 🗺️ [Architecture documentation](docs/architecture.md) · [System diagram](assets/system-diagram.svg) · [Functional view](assets/functional-view.svg)
 
 ---
