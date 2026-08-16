@@ -591,7 +591,7 @@ const API_BASE = import.meta.env.NEXT_PUBLIC_API_URL || "http://localhost:5194/a
 export const api = {
   async getGarments(userId?: string): Promise<Garment[]> {
     const qs = userId ? `?userId=${encodeURIComponent(userId)}` : "";
-    const res = await fetch(`${API_BASE}/garments/${qs}`);
+    const res = await fetch(`${API_BASE}/garments${qs}`);
     if (!res.ok) throw new Error("Failed to fetch garments");
     return res.json();
   },
