@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#818cf8"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#7c8ba1"/>
+    </marker>
+  </defs>
+
+  <rect width="1280" height="760" rx="24" fill="url(#bg)"/>
+
+  <text x="640" y="48" text-anchor="middle" font-size="28" font-weight="800" fill="#ffffff">VeraFit AI — Functional View</text>
+  <text x="640" y="74" text-anchor="middle" font-size="14" fill="#94a3b8">What the product does: from a shopper's photo and a garment to a keep-or-return verdict — and merchant intelligence from every run</text>
+
+  <!-- ===================== LEFT: shopper inputs ===================== -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="110" width="250" height="420" rx="14" fill="#1e293b" stroke="#334155"/>
+    <rect x="40" y="110" width="250" height="40" rx="14" fill="#0f172a"/>
+    <text x="165" y="136" text-anchor="middle" font-size="14" font-weight="700" fill="#38bdf8">Shopper Inputs</text>
+    <rect x="60" y="168" width="210" height="60" rx="9" fill="#273449"/>
+    <text x="165" y="192" text-anchor="middle" font-size="12.5" font-weight="600" fill="#e2e8f0">Selfie / full-body photo</text>
+    <text x="165" y="210" text-anchor="middle" font-size="11" fill="#94a3b8">calibrated mannequin</text>
+    <rect x="60" y="244" width="210" height="60" rx="9" fill="#273449"/>
+    <text x="165" y="268" text-anchor="middle" font-size="12.5" font-weight="600" fill="#e2e8f0">Garment selection</text>
+    <text x="165" y="286" text-anchor="middle" font-size="11" fill="#94a3b8">SKU · materials · color</text>
+    <rect x="60" y="320" width="210" height="60" rx="9" fill="#273449"/>
+    <text x="165" y="344" text-anchor="middle" font-size="12.5" font-weight="600" fill="#e2e8f0">Allergies &amp; skin profile</text>
+    <text x="165" y="362" text-anchor="middle" font-size="11" fill="#94a3b8">wool · nickel · rosacea</text>
+    <rect x="60" y="396" width="210" height="60" rx="9" fill="#273449"/>
+    <text x="165" y="420" text-anchor="middle" font-size="12.5" font-weight="600" fill="#e2e8f0">Mood / occasion</text>
+    <text x="165" y="438" text-anchor="middle" font-size="11" fill="#94a3b8">cozy → structured</text>
+    <text x="165" y="488" text-anchor="middle" font-size="11" fill="#64748b">Skin analysis (photo) via YouCam · no generic models</text>
+  </g>
+
+  <!-- ===================== CENTER: certainty engines ===================== -->
+  <g filter="url(#shadow)">
+    <rect x="330" y="110" width="360" height="420" rx="14" fill="#1e293b" stroke="#334155"/>
+    <rect x="330" y="110" width="360" height="40" rx="14" fill="#0f172a"/>
+    <text x="510" y="136" text-anchor="middle" font-size="14" font-weight="700" fill="#38bdf8">Three Certainty Engines</text>
+
+    <rect x="352" y="166" width="316" height="76" rx="10" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="372" y="192" font-size="14" font-weight="700" fill="#e2e8f0">FIT — SSIM Stress-Test</text>
+    <text x="372" y="212" font-size="11.5" fill="#94a3b8">3 parallel AI try-on renders → pixel-level fit</text>
+    <text x="372" y="228" font-size="11.5" fill="#94a3b8">stability, variance, diff heatmap</text>
+
+    <rect x="352" y="258" width="316" height="76" rx="10" fill="#0f172a" stroke="#818cf8" stroke-width="1.2"/>
+    <text x="372" y="284" font-size="14" font-weight="700" fill="#e2e8f0">COLOR — True-Match</text>
+    <text x="372" y="304" font-size="11.5" fill="#94a3b8">CIELab ΔE vs seasonal palette &amp; skin tone</text>
+    <text x="372" y="320" font-size="11.5" fill="#94a3b8">"it didn't suit me" returns eliminated</text>
+
+    <rect x="352" y="350" width="316" height="76" rx="10" fill="#0f172a" stroke="#34d399" stroke-width="1.2"/>
+    <text x="372" y="376" font-size="14" font-weight="700" fill="#e2e8f0">FABRIC — Safety Audit</text>
+    <text x="372" y="396" font-size="11.5" fill="#94a3b8">material map × allergies × skin concerns</text>
+    <text x="372" y="412" font-size="11.5" fill="#94a3b8">hard 0.40 penalty on allergen conflict</text>
+
+    <rect x="352" y="442" width="316" height="60" rx="10" fill="url(#accent)"/>
+    <text x="510" y="467" text-anchor="middle" font-size="14" font-weight="800" fill="#0f172a">AI VERDICT — plain-language explanation</text>
+    <text x="510" y="487" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0f172a">keep probability · next actions</text>
+  </g>
+
+  <!-- ===================== RIGHT: shopper output ===================== -->
+  <g filter="url(#shadow)">
+    <rect x="730" y="110" width="250" height="420" rx="14" fill="#1e293b" stroke="#334155"/>
+    <rect x="730" y="110" width="250" height="40" rx="14" fill="#0f172a"/>
+    <text x="855" y="136" text-anchor="middle" font-size="14" font-weight="700" fill="#38bdf8">Shopper Outcome</text>
+    <rect x="752" y="172" width="206" height="120" rx="10" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+    <text x="855" y="216" text-anchor="middle" font-size="46" font-weight="800" fill="#34d399">87</text>
+    <text x="855" y="244" text-anchor="middle" font-size="14" font-weight="700" fill="#e2e8f0">KEEP PROBABILITY</text>
+    <text x="855" y="266" text-anchor="middle" font-size="11" fill="#94a3b8">fit · color · fabric weighted</text>
+    <rect x="752" y="308" width="206" height="52" rx="9" fill="#273449"/>
+    <text x="855" y="331" text-anchor="middle" font-size="13.5" font-weight="700" fill="#34d399">STRONG_BUY</text>
+    <text x="855" y="348" text-anchor="middle" font-size="11" fill="#94a3b8">CONSIDER_CAUTION · HIGH_RETURN_RISK</text>
+    <rect x="752" y="376" width="206" height="52" rx="9" fill="#273449"/>
+    <text x="855" y="399" text-anchor="middle" font-size="13.5" font-weight="700" fill="#e2e8f0">Buy with confidence</text>
+    <text x="855" y="416" text-anchor="middle" font-size="11" fill="#94a3b8">keep / purchase / return logged</text>
+    <text x="855" y="490" text-anchor="middle" font-size="11" fill="#64748b">feedback closes the loop → personalization</text>
+  </g>
+
+  <!-- arrows: inputs -> engines -->
+  <path d="M 290 220 C 315 220 318 205 328 205" stroke="#7c8ba1" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <path d="M 290 290 C 318 290 318 296 328 296" stroke="#7c8ba1" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <path d="M 290 360 C 318 360 318 388 328 388" stroke="#7c8ba1" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <path d="M 290 430 C 318 430 318 474 328 474" stroke="#7c8ba1" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+
+  <!-- arrows: engines -> outcome -->
+  <path d="M 690 260 C 712 260 716 232 728 232" stroke="#7c8ba1" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <path d="M 690 340 C 712 340 716 334 728 334" stroke="#7c8ba1" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+
+  <!-- feedback loop -->
+  <path d="M 855 500 C 855 560 165 560 165 534" stroke="#7c8ba1" stroke-width="2" fill="none" stroke-dasharray="6 5" marker-end="url(#arr)"/>
+  <text x="510" y="552" text-anchor="middle" font-size="11.5" fill="#7c8ba1">feedback loop — keeps retraining personalization &amp; history signals</text>
+
+  <!-- ===================== BOTTOM: merchant ===================== -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="590" width="940" height="130" rx="14" fill="#1e293b" stroke="#334155"/>
+    <rect x="40" y="590" width="940" height="40" rx="14" fill="#0f172a"/>
+    <text x="510" y="616" text-anchor="middle" font-size="14" font-weight="700" fill="#38bdf8">Merchant Intelligence (B2B) — every run feeds the vendor's fleet</text>
+    <rect x="62" y="644" width="212" height="52" rx="9" fill="#273449"/>
+    <text x="168" y="667" text-anchor="middle" font-size="12.5" font-weight="700" fill="#e2e8f0">Real-time fleet pulse</text>
+    <text x="168" y="684" text-anchor="middle" font-size="10.5" fill="#94a3b8">keep rate · live</text>
+    <rect x="290" y="644" width="212" height="52" rx="9" fill="#273449"/>
+    <text x="396" y="667" text-anchor="middle" font-size="12.5" font-weight="700" fill="#e2e8f0">Clusters &amp; 7-day demand</text>
+    <text x="396" y="684" text-anchor="middle" font-size="10.5" fill="#94a3b8">per-vendor, isolated</text>
+    <rect x="518" y="644" width="212" height="52" rx="9" fill="#273449"/>
+    <text x="624" y="667" text-anchor="middle" font-size="12.5" font-weight="700" fill="#e2e8f0">Supplier defects</text>
+    <text x="624" y="684" text-anchor="middle" font-size="10.5" fill="#94a3b8">AI-efficacy vs reality</text>
+    <rect x="746" y="644" width="212" height="52" rx="9" fill="#273449"/>
+    <text x="852" y="667" text-anchor="middle" font-size="12.5" font-weight="700" fill="#e2e8f0">Inventory advice</text>
+    <text x="852" y="684" text-anchor="middle" font-size="10.5" fill="#94a3b8">clear risk before stock</text>
+  </g>
+  <path d="M 855 500 C 855 560 960 560 960 590" stroke="#7c8ba1" stroke-width="2" fill="none" stroke-dasharray="6 5" marker-end="url(#arr)"/>
+
+  <!-- right vertical panel -->
+  <g filter="url(#shadow)">
+    <rect x="1000" y="110" width="240" height="610" rx="14" fill="#1e293b" stroke="#334155"/>
+    <rect x="1000" y="110" width="240" height="40" rx="14" fill="#0f172a"/>
+    <text x="1120" y="136" text-anchor="middle" font-size="14" font-weight="700" fill="#38bdf8">Why it works</text>
+    <text x="1024" y="184" font-size="12.5" font-weight="700" fill="#e2e8f0">Real photo, not a model</text>
+    <text x="1024" y="204" font-size="11.5" fill="#94a3b8">gender-aware full-body mannequins; skin analysis via YouCam</text>
+    <text x="1024" y="252" font-size="12.5" font-weight="700" fill="#e2e8f0">Deterministic math</text>
+    <text x="1024" y="272" font-size="11.5" fill="#94a3b8">SSIM + CIELab — auditable, testable, explainable</text>
+    <text x="1024" y="320" font-size="12.5" font-weight="700" fill="#e2e8f0">Multi-agent + LLM</text>
+    <text x="1024" y="340" font-size="11.5" fill="#94a3b8">LangGraph orchestration; verdicts via LiteLLM / Ollama</text>
+    <text x="1024" y="388" font-size="12.5" font-weight="700" fill="#e2e8f0">Self-improving</text>
+    <text x="1024" y="408" font-size="11.5" fill="#94a3b8">every keep/return logged and folded back</text>
+  </g>
+
+  <text x="640" y="744" text-anchor="middle" font-size="12" fill="#64748b">VeraFit AI · Purchase Certainty Engine · one deploy — see docs/architecture.md &amp; Mermaid system view in README</text>
+</svg>

@@ -54,14 +54,6 @@
 
 ---
 
-## Demo & GTM Milestones
-
-- 🟡 Video walkthrough (see README) + PDF pitch deck (`docs/presentation.html` → print to PDF)
-- 🔲 Public demo environment on AWS (single click via `scripts/deploy.sh`)
-- 🔲 Pilot with 1–2 merchants: measure return-rate reduction as the north-star KPI
-
----
-
 ## North-Star Metrics
 
 | Metric | Why |

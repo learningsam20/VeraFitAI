@@ -4,74 +4,79 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>VeraFit AI — Purchase Certainty Engine</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
 <style>
   :root{
     --bg:#0f172a; --panel:#1e293b; --panel2:#273449; --line:#334155;
     --text:#e2e8f0; --muted:#94a3b8; --accent:#38bdf8; --accent2:#818cf8;
     --green:#34d399; --amber:#fbbf24; --pink:#f472b6;
   }
-  *{box-sizing:border-box;margin:0;padding:0}
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   html,body{background:#0b1220;color:var(--text);font-family:Inter,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif}
-  .slide{width:1280px;height:720px;padding:64px 72px;position:relative;overflow:hidden;
+  .slide{width:2560px;height:1440px;padding:120px 140px;position:relative;overflow:hidden;
          display:flex;flex-direction:column;page-break-after:always;break-after:page;
-         background:
-           radial-gradient(1100px 500px at 85% -10%, rgba(56,189,248,.14), transparent 60%),
-           radial-gradient(900px 500px at -10% 110%, rgba(129,140,248,.12), transparent 55%),
-           var(--bg);
-         border-bottom:1px solid var(--line);}
+         background:var(--bg);}
   @media print{
-    @page{size:1280px 720px;margin:0}
+    @page{size:2560px 1440px;margin:0}
     html,body{background:#fff}
-    .slide{box-shadow:none;border:none;page-break-after:always}
+    .slide{box-shadow:none;border:none;page-break-after:auto;break-after:auto}
+    .slide + .slide{page-break-before:always;break-before:page}
   }
-  .kicker{font-size:17px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:14px}
-  h1{font-size:64px;line-height:1.06;font-weight:800;letter-spacing:-1px;margin-bottom:20px}
-  h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-  h2{font-size:44px;font-weight:800;letter-spacing:-.5px;margin-bottom:26px}
-  h3{font-size:24px;font-weight:700;margin-bottom:10px}
-  p.lead{font-size:22px;line-height:1.55;color:#cbd5e1;max-width:1000px}
-  p.small{font-size:16px;line-height:1.5;color:var(--muted)}
-  .tag{display:inline-block;padding:6px 14px;border-radius:999px;font-size:14px;font-weight:600;margin:2px 4px 2px 0}
-  .tag.blue{background:rgba(56,189,248,.14);color:var(--accent)}
-  .tag.purple{background:rgba(129,140,248,.14);color:var(--accent2)}
-  .tag.green{background:rgba(52,211,153,.14);color:var(--green)}
-  .tag.amber{background:rgba(251,191,36,.14);color:var(--amber)}
-  .tag.pink{background:rgba(244,114,182,.14);color:var(--pink)}
-  .grid{display:grid;gap:18px}
+  .kicker{font-size:32px;letter-spacing:6px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:30px}
+  h1{font-size:128px;line-height:1.06;font-weight:800;letter-spacing:-2px;margin-bottom:40px}
+  h1 em{font-style:normal;color:var(--accent)}
+  h2{font-size:88px;font-weight:800;letter-spacing:-1px;margin-bottom:52px;line-height:1.1}
+  h3{font-size:44px;font-weight:700;margin-bottom:20px}
+  p.lead{font-size:40px;line-height:1.55;color:#cbd5e1;max-width:2000px}
+  p.small{font-size:28px;line-height:1.5;color:var(--muted)}
+  .tag{display:inline-block;padding:12px 26px;border-radius:999px;font-size:27px;font-weight:600;margin:4px 8px 4px 0}
+  .tag.blue{background:#12304a;color:#7dd3fc}
+  .tag.purple{background:#2a2a4a;color:#b9bdfc}
+  .tag.green{background:#123a2e;color:#7df0c2}
+  .tag.amber{background:#3a2f12;color:#fcd77d}
+  .tag.pink{background:#3a1530;color:#fda3d4}
+  .grid{display:grid;gap:34px}
   .grid.cards{grid-template-columns:repeat(3,1fr)}
   .grid.cards2{grid-template-columns:repeat(2,1fr)}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px}
-  .card .num{font-size:15px;font-weight:700;color:var(--accent);letter-spacing:2px;margin-bottom:8px}
-  .card h4{font-size:20px;font-weight:700;margin-bottom:10px}
-  .card p{font-size:15px;line-height:1.55;color:var(--muted)}
-  .foot{position:absolute;bottom:26px;left:72px;right:72px;display:flex;justify-content:space-between;
-        font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:48px}
+  .card .num{font-size:26px;font-weight:700;color:var(--accent);letter-spacing:4px;margin-bottom:14px}
+  .card h4{font-size:38px;font-weight:700;margin-bottom:18px}
+  .card p{font-size:28px;line-height:1.55;color:var(--muted)}
+  .foot{position:absolute;bottom:52px;left:140px;right:140px;display:flex;justify-content:space-between;
+        font-size:26px;color:var(--muted);border-top:1px solid var(--line);padding-top:26px}
   .slide.cover{align-items:flex-start;justify-content:center}
-  .slide.cover .logo{font-size:20px;font-weight:700;color:var(--accent);letter-spacing:2px;margin-bottom:auto}
-  .slide.cover h1{font-size:84px;max-width:1080px}
-  .slide.cover .meta{margin-top:34px;font-size:19px;color:var(--muted)}
+  .slide.cover .logo{font-size:38px;font-weight:700;color:var(--accent);letter-spacing:4px;margin-bottom:auto}
+  .slide.cover h1{font-size:168px;max-width:2200px}
+  .slide.cover .meta{margin-top:64px}
   .slide.center{align-items:center;justify-content:center;text-align:center}
-  .slide.center h1{font-size:96px}
-  .metric{font-size:56px;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--accent2));
-          -webkit-background-clip:text;background-clip:text;color:transparent}
-  .pipeline{display:flex;align-items:stretch;gap:0;margin-top:26px}
-  .pipe{flex:1;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:18px 14px;text-align:center}
-  .pipe+.pipe{margin-left:8px}
-  .pipe .pt{font-size:15px;font-weight:700;color:var(--text)}
-  .pipe .ps{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.4}
-  .formula{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px 32px;
-           font-size:20px;line-height:1.9;color:#e2e8f0;margin-top:24px;letter-spacing:.3px}
+  .slide.center h1{font-size:192px}
+  .metric{font-size:110px;font-weight:800;color:var(--accent)}
+  .pipeline{display:flex;align-items:stretch;margin-top:40px}
+  .pipe{flex:1;background:var(--panel2);border:1px solid var(--line);border-radius:22px;padding:32px 26px;text-align:center}
+  .pipe+.pipe{margin-left:14px}
+  .pipe .pt{font-size:30px;font-weight:700;color:var(--text)}
+  .pipe .ps{font-size:22px;color:var(--muted);margin-top:12px;line-height:1.45}
+  .formula{background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:52px 60px;
+           font-size:38px;line-height:1.9;color:#e2e8f0;margin-top:48px;letter-spacing:.3px}
   .formula b{color:var(--accent)}
-  .two{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
-  .persona{border-left:3px solid var(--accent);padding:6px 0 6px 16px;margin:12px 0}
-  .persona b{color:#f1f5f9}
-  .persona span{color:var(--muted);font-size:14px}
+  .two{display:grid;grid-template-columns:1.05fr .95fr;gap:76px;align-items:center}
+  .persona{border-left:4px solid var(--accent);padding:12px 0 12px 32px;margin:24px 0}
+  .persona b{color:#f1f5f9;font-size:32px}
+  .persona span{color:var(--muted);font-size:27px}
   ul.clean{list-style:none}
-  ul.clean li{padding:10px 0 10px 30px;position:relative;font-size:19px;line-height:1.5;color:#cbd5e1}
-  ul.clean li::before{content:"";position:absolute;left:0;top:19px;width:10px;height:10px;border-radius:3px;background:var(--accent)}
-  ul.clean li small{display:block;color:var(--muted);font-size:14px;margin-top:3px}
-  .bar{height:14px;border-radius:999px;background:var(--panel2);overflow:hidden;margin-top:8px}
+  ul.clean li{padding:20px 0 20px 56px;position:relative;font-size:36px;line-height:1.5;color:#cbd5e1}
+  ul.clean li::before{content:"";position:absolute;left:0;top:30px;width:18px;height:18px;border-radius:4px;background:var(--accent)}
+  ul.clean li small{display:block;color:var(--muted);font-size:26px;margin-top:6px}
+  .bar{height:26px;border-radius:999px;background:var(--panel2);overflow:hidden;margin-top:14px}
   .bar>div{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+  .sectable{width:100%;border-collapse:collapse;background:var(--panel);border-radius:24px;overflow:hidden;font-size:29px}
+  .sectable th{background:#0f172a;color:#7dd3fc;text-align:left;padding:26px 30px;font-size:28px;letter-spacing:1px;text-transform:uppercase}
+  .sectable td{padding:24px 30px;border-top:1px solid var(--line);vertical-align:top;color:#cbd5e1}
+  .sectable td b{color:#f1f5f9}
+  .sectable td .code{color:#a5b4fc;font-size:25px}
+  .sectable tr:nth-child(even) td{background:#233047}
+  .mermaidbox{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;width:100%}
+  .mermaidbox svg{width:100%;height:auto;max-width:2300px}
 </style>
 </head>
 <body>
@@ -86,7 +91,7 @@
     <span class="tag blue">LangGraph · 6 Agents</span>
     <span class="tag purple">SSIM + CIELab Math</span>
     <span class="tag green">FastAPI + React</span>
-    <span class="tag amber">B2B Merchant Analytics</span>
+    <span class="tag amber">YouCam VTO + Skin</span>
   </div>
   <div class="foot"><span>VeraFit AI — Investor &amp; Demo Deck</span><span>2026</span></div>
 </section>
@@ -95,25 +100,25 @@
 <section class="slide">
   <div class="kicker">The Problem</div>
   <h2>Apparel e-commerce is bleeding money on returns.</h2>
-  <div class="grid cards" style="margin-top:30px">
-    <div class="card"><div class="num">THE COST</div><h4>~30% return rates</h4><p>Fashion returns run far higher than any other vertical — and every return erases margin on a product that shipped, was worn, and was shipped back.</p></div>
+  <div class="grid cards">
+    <div class="card"><div class="num">THE COST</div><h4>~30% return rates</h4><p>Fashion returns run far higher than any other vertical — every return erases margin on a product that shipped, was worn, and was shipped back.</p></div>
     <div class="card"><div class="num">THE CAUSE</div><h4>No fit confidence pre-purchase</h4><p>Shoppers buy blind: the garment was never seen on their body, their skin, or in their colors. "Fit gamble" drives most returns.</p></div>
-    <div class="card"><div class="num">THE BLIND SPOT</div><h4>Merchants can't see it coming</h4><p>Retailers learn about a bad SKU only after the returns arrive — no early-warning system between catalog and cash register.</p></div>
+    <div class="card"><div class="num">THE BLIND SPOT</div><h4>Merchants can't see it coming</h4><p>Retailers learn about a bad SKU only after the returns arrive — no early-warning between catalog and cash register.</p></div>
   </div>
-  <div class="foot"><span>Problem</span><span>01 / 08</span></div>
+  <div class="foot"><span>Problem</span><span>VeraFit AI</span></div>
 </section>
 
 <!-- ======================================================== SOLUTION === -->
 <section class="slide">
   <div class="kicker">The Solution</div>
   <h2>One score. Three stress tests. A mannequin that knows you.</h2>
-  <div class="grid cards" style="margin-top:28px">
+  <div class="grid cards">
     <div class="card"><div class="num">FIT</div><h4>SSIM Fit Stress-Test</h4><p>Three AI try-on renders of the garment on the shopper's actual photo; pixel-level SSIM variance exposes an unstable drape before it becomes a return.</p></div>
     <div class="card"><div class="num">COLOR</div><h4>CIELab Color Harmony</h4><p>Garment color matched against the shopper's seasonal palette and skin tone using Delta-E — kills the "it didn't suit me" returns.</p></div>
     <div class="card"><div class="num">FABRIC</div><h4>Fabric-to-Skin Safety</h4><p>Material map audited against personal allergies and skin concerns (rosacea, eczema). A flagged allergen multiplies the risk penalty.</p></div>
   </div>
-  <p class="lead" style="margin-top:34px">The result is a <b style="color:var(--accent)">Keep Probability score (0–100)</b> with a plain-language verdict: <b style="color:var(--green)">STRONG_BUY</b> · <b style="color:var(--amber)">CONSIDER_CAUTION</b> · <b style="color:var(--pink)">HIGH_RETURN_RISK</b>.</p>
-  <div class="foot"><span>Solution</span><span>02 / 08</span></div>
+  <p class="lead" style="margin-top:64px">The result is a <b style="color:var(--accent)">Keep Probability score (0–100)</b> with a plain-language verdict: <b style="color:var(--green)">STRONG_BUY</b> · <b style="color:var(--amber)">CONSIDER_CAUTION</b> · <b style="color:var(--pink)">HIGH_RETURN_RISK</b>.</p>
+  <div class="foot"><span>Solution</span><span>VeraFit AI</span></div>
 </section>
 
 <!-- ========================================================== HOW ==== -->
@@ -133,35 +138,95 @@
     &nbsp;&nbsp;&nbsp;&nbsp;+ personalization &amp; purchase-history deltas × mood scalar<br>
     &nbsp;&nbsp;&nbsp;&nbsp;× <b>0.40</b> when a flagged allergen is detected
   </div>
-  <p class="small" style="margin-top:22px">Every run persists as a session; shopper keep/purchase/return feedback closes the loop and retrains the engine's signals.</p>
-  <div class="foot"><span>How It Works — multi-agent LangGraph</span><span>03 / 08</span></div>
+  <p class="small" style="margin-top:44px">Every run persists as a session; shopper keep / purchase / return feedback closes the loop and retrains the engine's signals.</p>
+  <div class="foot"><span>How It Works — multi-agent LangGraph</span><span>VeraFit AI</span></div>
+</section>
+
+<!-- ======================================================== AGENTS ==== -->
+<section class="slide">
+  <div class="kicker">The Six Agents</div>
+  <h2>Five experts run in parallel. One synthesiser decides.</h2>
+  <table class="sectable">
+    <tr><th style="width:9%">#</th><th style="width:22%">Agent</th><th style="width:44%">Role in the workflow</th><th>Key outputs</th></tr>
+    <tr><td>1</td><td><b>VTO Agent</b><br><span class="code">vto_agent.py</span></td><td>Runs 3 parallel AI try-on renders of the garment on the shopper's actual photo (YouCam cloth-v4), stress-testing fit stability</td><td>renders · SSIM score · diff heatmap · unstable flag</td></tr>
+    <tr><td>2</td><td><b>Color Agent</b><br><span class="code">color_agent.py</span></td><td>Matches garment color to the shopper's seasonal palette &amp; skin tone via perceptual CIELab ΔE</td><td>harmony score · ΔE · palette match · L*a*b*</td></tr>
+    <tr><td>3</td><td><b>Fabric Agent</b><br><span class="code">fabric_agent.py</span></td><td>Audits the material map against allergies &amp; skin concerns (rosacea, eczema, friction, heat)</td><td>safety score · warnings · 0.40 penalty flag</td></tr>
+    <tr><td>4</td><td><b>Personalization</b><br><span class="code">personalization_agent.py</span></td><td>Applies fit preference, comfort-vs-style bias, and the mood slider</td><td>score delta · mood scalar (0.90–1.10)</td></tr>
+    <tr><td>5</td><td><b>History Agent</b><br><span class="code">history_agent.py</span></td><td>Aggregates past keep / return / purchase sessions into evidence-backed signals</td><td>learnings · recommendations · score delta</td></tr>
+    <tr><td>6</td><td><b>Synthesis Agent</b><br><span class="code">synthesis_agent.py</span></td><td>Fuses all five outputs into the weighted master score, picks the verdict, writes the AI explanation (LiteLLM)</td><td>keep_probability · verdict · explanation</td></tr>
+  </table>
+  <div class="foot"><span>Agents — fan-out from START, converge at Synthesis</span><span>VeraFit AI</span></div>
+</section>
+
+<!-- ====================================================== ARCH ==== -->
+<section class="slide">
+  <div class="kicker">System Architecture</div>
+  <h2>How the components interact.</h2>
+  <div class="mermaidbox">
+  <pre class="mermaid">
+flowchart LR
+  subgraph C["Client"]
+    SPA["React SPA"]
+    PER["Personas<br/>shoppers · admins"]
+  end
+  subgraph API["FastAPI"]
+    RT["/api/v1 routers"]
+  end
+  subgraph GR["LangGraph · 6 agents"]
+    VTO["VTO"]
+    COL["Color"]
+    FAB["Fabric"]
+    PL["Personalize"]
+    HI["History"]
+    SY["Synthesis"]
+  end
+  YC["YouCam API<br/>VTO + skin"]
+  M["Math<br/>SSIM · CIELab"]
+  LL["LiteLLM<br/>gpt-4o / ollama"]
+  DB[("SQLite")]
+  SPA -- REST --> RT
+  RT -- GraphState --> VTO & COL & FAB & PL & HI
+  VTO & COL & FAB & PL & HI --> SY
+  VTO --> YC
+  VTO --> M
+  COL --> M
+  SY -- verdict --> LL
+  SY -- score --> RT
+  RT -- persist --> DB
+  SPA -- feedback --> DB
+  DB -- history --> HI
+  DB -- analytics --> A["Admin Portal"]
+  SPA -- REST --> A
+  </pre>
+  </div>
+  <div class="foot"><span>System view — mermaid</span><span>VeraFit AI</span></div>
 </section>
 
 <!-- ======================================================= PERSONAS ==== -->
 <section class="slide">
-  <div class="kicker">The Demo</div>
+  <div class="kicker">Hyper-personalized Fitment</div>
   <h2>Real people, real photos, real predictions.</h2>
   <div class="two">
     <div>
-      <p class="lead">Each shopper has a calibrated digital mannequin — gender-appropriate, full-body, and unique. The VTO drapes the garment onto <b style="color:var(--accent)">their</b> photo, not a generic model.</p>
-      <div class="persona"><b>Elena Vance</b> — Luxury apparel · Cool Winter · rosacea · wool + nickel allergies</div>
-      <div class="persona"><b>Astrid Holm</b> — Eco-naturalist · Warm Autumn · eczema · synthetics / latex / wool</div>
-      <div class="persona"><b>Lars Hedlund</b> — Minimalist menswear · Warm Autumn · sensitive skin</div>
+      <p class="lead">Each shopper has a calibrated digital mannequin — gender-appropriate, full-body, unique. The VTO drapes the garment onto <b style="color:var(--accent)">their</b> photo, not a generic model. Skin analysis runs on their selfie via YouCam.</p>
+      <div class="persona"><b>Elena Vance</b> <span>· luxury · Cool Winter · rosacea · wool + nickel</span></div>
+      <div class="persona"><b>Astrid Holm</b> <span>· eco-naturalist · Warm Autumn · eczema · synthetics / latex / wool</span></div>
+      <div class="persona"><b>Lars Hedlund</b> <span>· minimalist menswear · Warm Autumn · sensitive skin</span></div>
     </div>
     <div>
       <div class="metric">Gender-aware</div>
-      <p class="small" style="margin-top:8px">Men's garments get men's imagery; women's garments keep women's. Every mannequin differs from every other — the prediction is per-person, per-SKU.</p>
-      <div style="margin-top:18px">
+      <p class="small" style="margin-top:12px">Men's garments get men's imagery; women's keep women's. Every mannequin differs — the prediction is per-person, per-SKU.</p>
+      <div style="margin-top:32px">
         <p class="small" style="font-weight:600;color:#cbd5e1">Fit Stress-Test (SSIM variance)</p>
         <div class="bar"><div style="width:96%"></div></div>
-        <p class="small" style="font-weight:600;color:#cbd5e1;margin-top:14px">Color Harmony (CIELab ΔE)</p>
+        <p class="small" style="font-weight:600;color:#cbd5e1;margin-top:26px">Color Harmony (CIELab ΔE)</p>
         <div class="bar"><div style="width:88%"></div></div>
-        <p class="small" style="font-weight:600;color:#cbd5e1;margin-top:14px">Fabric Safety (allergen audit)</p>
+        <p class="small" style="font-weight:600;color:#cbd5e1;margin-top:26px">Fabric Safety (allergen audit)</p>
         <div class="bar"><div style="width:74%"></div></div>
       </div>
     </div>
   </div>
-  <div class="foot"><span>Demo — shopper personas &amp; mannequins</span><span>04 / 08</span></div>
+  <div class="foot"><span>Hyper-personalized Fitment — shopper personas &amp; mannequins</span><span>VeraFit AI</span></div>
 </section>
 
 <!-- ====================================================== ADMIN ======= -->
@@ -171,83 +236,83 @@
   <div class="two">
     <div>
       <ul class="clean">
-        <li>Real-time fleet pulse &amp; Keep Rate<small>live per-vendor performance, streamed</small></li>
+        <li>Real-time fleet pulse &amp; Keep Rate<small>live per-vendor performance</small></li>
         <li>Vendor clusters + 7-day demand trends<small>Venice vs Nordic fleets — strictly isolated</small></li>
         <li>Supplier defect analytics &amp; AI-efficacy<small>do predictions match reality per SKU?</small></li>
         <li>Inventory clearance audits + advice<small>flag &amp; clear high-return-risk stock early</small></li>
       </ul>
     </div>
     <div>
-      <div class="card">
-        <h4 style="color:var(--accent)">Marcus Vance — Venice Luxury Atelier</h4>
-        <p class="small">Sensitive-skin executives · atelier eveningwear · cashmere</p>
-      </div>
-      <div class="card" style="margin-top:16px">
-        <h4 style="color:var(--accent2)">Freja Lindqvist — Nordic Organic Weaves</h4>
-        <p class="small">Eco-naturalists · cocoon comfort · wool-avoiders</p>
-      </div>
-      <p class="small" style="margin-top:18px">A SKU-prefix resolver (SLK/CRP/CSH… → Venice · LNN/OVR/WOL… → Nordic) keeps every derived metric vendor-scoped end to end.</p>
+      <div class="card"><h4 style="color:var(--accent)">Marcus Vance — Venice Luxury Atelier</h4><p class="small">Sensitive-skin executives · atelier eveningwear · cashmere</p></div>
+      <div class="card" style="margin-top:30px"><h4 style="color:var(--accent2)">Freja Lindqvist — Nordic Organic Weaves</h4><p class="small">Eco-naturalists · cocoon comfort · wool-avoiders</p></div>
+      <p class="small" style="margin-top:34px">A SKU-prefix resolver (SLK/CRP/CSH… → Venice · LNN/OVR/WOL… → Nordic) keeps every derived metric vendor-scoped end to end.</p>
     </div>
   </div>
-  <div class="foot"><span>Merchant analytics — vendor-isolated admin</span><span>05 / 08</span></div>
+  <div class="foot"><span>Merchant analytics — vendor-isolated admin</span><span>VeraFit AI</span></div>
+</section>
+
+<!-- ======================================================== BENEFITS ===== -->
+<section class="slide">
+  <div class="kicker">Benefits</div>
+  <h2>Who wins when the prediction is right.</h2>
+  <div class="grid cards">
+    <div class="card"><div class="num">SHOPPERS</div><h4>Buy with confidence</h4><p>See the garment on your body, in your colors, against your skin before paying. Fewer wasted purchases — and an honest CONSIDER_CAUTION beats an expensive regret.</p></div>
+    <div class="card"><div class="num">MERCHANTS</div><h4>See returns before they happen</h4><p>Early warning on high-return-risk SKUs, vendor-scoped fleet intelligence, and a measured keep-rate to prove the return-rate reduction.</p></div>
+    <div class="card"><div class="num">THE INDUSTRY</div><h4>Predict, don't react</h4><p>A template for pre-purchase prediction with deterministic, auditable math — turning returns from a cost center into an explainable signal.</p></div>
+  </div>
+  <div class="foot"><span>Benefits</span><span>VeraFit AI</span></div>
 </section>
 
 <!-- ========================================================= TECH ==== -->
 <section class="slide">
   <div class="kicker">The Stack</div>
   <h2>Built to ship — and to scale.</h2>
-  <div class="grid cards" style="margin-top:28px">
+  <div class="grid cards">
     <div class="card"><div class="num">BACKEND</div><h4>FastAPI · Python 3.14</h4><p>Async SQLAlchemy + aiosqlite, pydantic-settings config, 30+ REST endpoints under /api/v1.</p></div>
-    <div class="card"><div class="num">INTELLIGENCE</div><h4>LangGraph · LiteLLM</h4><p>Orchestrated multi-agent graph; verdicts via OpenAI/Anthropic/Gemini or local Ollama.</p></div>
-    <div class="card"><div class="num">FRONTEND</div><h4>React · Vite · TypeScript</h4><p>Fitting Room, Calendar, History, Learnings, Mannequin calibration, and the Merchant Admin.</p></div>
-    <div class="card"><div class="num">RENDERING</div><h4>YouCam AI Clothes VTO</h4><p>cloth-v4 virtual try-on with deterministic mock fallback for offline demos.</p></div>
-    <div class="card"><div class="num">MATH</div><h4>Scikit-image · OpenCV · NumPy</h4><p>SSIM stability engine + CIELab color engine — deterministic, testable scoring kernels.</p></div>
+    <div class="card"><div class="num">INTELLIGENCE</div><h4>LangGraph · LiteLLM</h4><p>Orchestrated multi-agent graph; verdicts via OpenAI / Anthropic / Gemini or local Ollama.</p></div>
+    <div class="card"><div class="num">FRONTEND</div><h4>React · Vite · TS</h4><p>Fitting Room, Calendar, History, Learnings, Mannequin calibration, and the Merchant Admin.</p></div>
+    <div class="card"><div class="num">RENDERING + SKIN</div><h4>YouCam API</h4><p>cloth-v4 virtual try-on and skin/facial-tone analysis, with deterministic mock fallback offline.</p></div>
+    <div class="card"><div class="num">MATH</div><h4>scikit-image · OpenCV</h4><p>SSIM stability engine + CIELab color engine — deterministic, testable scoring kernels.</p></div>
     <div class="card"><div class="num">DELIVERY</div><h4>Docker · AWS</h4><p>Single-container image; one command to deploy on ECS Fargate + ALB or EC2.</p></div>
   </div>
-  <div class="foot"><span>Technology</span><span>06 / 08</span></div>
+  <div class="foot"><span>Technology</span><span>VeraFit AI</span></div>
 </section>
 
 <!-- ======================================================== ROADMAP === -->
 <section class="slide">
   <div class="kicker">Roadmap</div>
   <h2>From certainty engine to returns-as-a-service.</h2>
-  <div class="grid cards2" style="margin-top:24px">
-    <div class="card">
-      <div class="num">SHIPPED</div>
-      <h4>M1–M3: Core Engine → Merchant Analytics → Delivery</h4>
-      <p class="small">Multi-agent scoring, vendor-isolated B2B dashboard, container + AWS deploy, full documentation.</p>
-    </div>
-    <div class="card">
-      <div class="num">NEXT · M4</div>
-      <h4>Hardening &amp; Scale</h4>
-      <p class="small">Real auth + JWT, Alembic migrations, Postgres, S3 asset storage, HTTPS, CI/CD, background task queue.</p>
-    </div>
-    <div class="card">
-      <div class="num">M5</div>
-      <h4>Deeper Prediction</h4>
-      <p class="small">On-device auto-calibration, generative 3D fit simulation, richer fabric knowledge base, price sensitivity.</p>
-    </div>
-    <div class="card">
-      <div class="num">M6</div>
-      <h4>Network Effects</h4>
-      <p class="small">Anonymized fleet intelligence marketplace, return-insurance scoring, supply-chain early warning, PWA rollout.</p>
-    </div>
+  <div class="grid cards2">
+    <div class="card"><div class="num">SHIPPED · M1–M3</div><h4>Core Engine → Analytics → Delivery</h4><p class="small">Multi-agent scoring, vendor-isolated B2B dashboard, container + AWS deploy, full documentation.</p></div>
+    <div class="card"><div class="num">NEXT · M4</div><h4>Hardening &amp; Scale</h4><p class="small">Real auth + JWT, Alembic migrations, Postgres, S3 asset storage, HTTPS, CI/CD, background task queue.</p></div>
+    <div class="card"><div class="num">M5</div><h4>Deeper Prediction</h4><p class="small">On-device auto-calibration, generative 3D fit simulation, richer fabric knowledge base, price sensitivity.</p></div>
+    <div class="card"><div class="num">M6</div><h4>Network Effects</h4><p class="small">Anonymized fleet-intelligence marketplace, return-insurance scoring, supply-chain early warning, PWA rollout.</p></div>
   </div>
-  <div class="foot"><span>Roadmap</span><span>07 / 08</span></div>
+  <div class="foot"><span>Roadmap</span><span>VeraFit AI</span></div>
 </section>
 
 <!-- ======================================================== THANKS ==== -->
 <section class="slide center">
   <div class="kicker">VeraFit AI</div>
   <h1>Thank you.</h1>
-  <p class="lead" style="margin-bottom:26px">Every returned garment is a failed prediction.<br>We make the prediction before the purchase.</p>
+  <p class="lead" style="margin-bottom:52px">Every returned garment is a failed prediction.<br>We make the prediction before the purchase.</p>
   <div>
     <span class="tag blue">Let's demo the Fitting Room</span>
     <span class="tag purple">Ask about vendor analytics</span>
-    <span class="tag green">Explore the architecture docs</span>
+    <span class="tag green">Explore the architecture</span>
   </div>
-  <div class="foot" style="position:static;margin-top:44px"><span>VeraFit AI — Purchase Certainty Engine</span><span>08 / 08</span></div>
+  <div class="foot" style="position:static;margin-top:88px"><span>VeraFit AI — Purchase Certainty Engine</span><span>2026</span></div>
 </section>
 
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "dark",
+    fontFamily: "Inter, sans-serif",
+    securityLevel: "loose",
+    flowchart: { useMaxWidth: false, htmlLabels: true, curve: "basis" },
+    themeVariables: { fontSize: "30px" }
+  });
+</script>
 </body>
 </html>
