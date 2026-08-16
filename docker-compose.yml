@@ -1,0 +1,45 @@
+# =============================================================================
+# VeraFit AI — one-command local / VM deployment
+#
+#   docker compose up -d --build
+#   -> UI + API:   http://localhost:5194
+#   -> Swagger:    http://localhost:5194/docs
+#
+# Secrets & service URLs come from the root .env (see .env.example).
+# The SQLite database is persisted in a named volume (./data mounted to /app/data).
+# =============================================================================
+services:
+  verafit:
+    build:
+      context: .
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-/api/v1}
+    image: verafit:latest
+    container_name: verafit
+    restart: unless-stopped
+    ports:
+      - "${BACKEND_PORT:-5194}:5194"
+    environment:
+      ENVIRONMENT: ${ENVIRONMENT:-production}
+      SECRET_KEY: ${SECRET_KEY:-change-me-in-production}
+      DATABASE_URL: sqlite+aiosqlite:////app/data/verafit.db
+      YOUCAM_API_KEY: ${YOUCAM_API_KEY:-}
+      YOUCAM_API_URL: ${YOUCAM_API_URL:-https://yce-api-01.makeupar.com}
+      YOUCAM_MOCK_FALLBACK: ${YOUCAM_MOCK_FALLBACK:-false}
+      LLM_MODEL: ${LLM_MODEL:-gpt-4o}
+      OLLAMA_API_BASE: ${OLLAMA_API_BASE:-http://host.docker.internal:11434}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+    volumes:
+      - verafit-data:/app/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5194/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+volumes:
+  verafit-data:
